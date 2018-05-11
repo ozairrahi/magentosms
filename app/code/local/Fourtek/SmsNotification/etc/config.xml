@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Fourtek_SmsNotification>
+      <version>0.1.0</version>
+    </Fourtek_SmsNotification>
+  </modules>
+  <frontend>
+    <routers>
+      <smsnotification>
+        <use>standard</use>
+          <args>
+            <module>Fourtek_SmsNotification</module>
+            <frontName>smsnotification</frontName>
+          </args>
+      </smsnotification>
+    </routers>
+		<layout>
+		  <updates>
+			<smsnotification>
+			  <file>smsnotification.xml</file>
+			</smsnotification>
+		  </updates>
+		</layout>
+  </frontend>
+  <global>
+    <helpers>
+      <smsnotification>
+        <class>Fourtek_SmsNotification_Helper</class>
+      </smsnotification>
+    </helpers>
+	<blocks>
+	  <smsnotification>
+		<class>Fourtek_SmsNotification_Block</class>
+	  </smsnotification>
+	</blocks>
+	<models>
+	  <smsnotification>
+		<class>Fourtek_SmsNotification_Model</class>
+		<resourceModel>smsnotification_mysql4</resourceModel>
+	  </smsnotification>
+	</models>
+    <events>
+      <sales_order_invoice_register>
+               <observers>
+                   <Fourtek_SmsNotification_Invoice_Sent>
+                       <type>singleton</type>
+                       <class>Fourtek_SmsNotification_Model_Observer</class>
+                       <method>salesOrderInvoicePay</method>
+                   </Fourtek_SmsNotification_Invoice_Sent>
+               </observers>
+    </sales_order_invoice_register>
+    <sales_order_shipment_save_after>
+               <observers>
+                   <Fourtek_SmsNotification_Shipment_Saved>
+                       <type>singleton</type>
+                       <class>Fourtek_SmsNotification_Model_Observer</class>
+                       <method>salesOrderShipmentSaveAfter</method>
+                   </Fourtek_SmsNotification_Shipment_Saved>
+               </observers>
+    </sales_order_shipment_save_after>
+    <sales_order_creditmemo_save_after>
+               <observers>
+                   <Fourtek_SmsNotification_creditmemo_Saved>
+                       <type>singleton</type>
+                       <class>Fourtek_SmsNotification_Model_Observer</class>
+                       <method>creditmemoSaveAfter</method>
+                   </Fourtek_SmsNotification_creditmemo_Saved>
+               </observers>
+    </sales_order_creditmemo_save_after>
+    <sales_order_payment_cancel>
+      <observers>
+        <Fourtek_SmsNotification_Order_Cancelled>
+          <class>Fourtek_SmsNotification_Model_Observer</class>
+            <type>singleton</type>
+          <method>paymentCancel</method>
+        </Fourtek_SmsNotification_Order_Cancelled>
+      </observers>
+    </sales_order_payment_cancel>
+    <checkout_onepage_controller_success_action> 
+        <observers>
+          <Fourtek_SmsNotification_Order_Save> 
+            <type>model</type> 
+            <class>Fourtek_SmsNotification_Model_Observer</class> 
+            <method>saveorder</method>
+          </Fourtek_SmsNotification_Order_Save>
+        </observers>
+      </checkout_onepage_controller_success_action>
+      <!-- <customer_register_success>
+          <observers>
+              <Fourtek_SmsNotification_register_success>
+                  <type>singleton</type>
+                  <class>Fourtek_SmsNotification_Model_Observer</class>
+                  <method>customerRegisterSuccess</method>
+              </Fourtek_SmsNotification_register_success>
+          </observers>
+      </customer_register_success> -->
+
+
+
+
+	  <sales_order_place_before> <!-- identifier of the event we want to catch -->
+        <observers>
+          <sales_order_place_before_handler> <!-- identifier of the event handler -->
+            <type>model</type> <!-- class method call type; valid are model, object and singleton -->
+            <class>smsnotification/observer</class> <!-- observers class alias -->
+            <method>orderplace</method>  <!-- observer's method to be called -->
+            <args></args> <!-- additional arguments passed to observer -->
+          </sales_order_place_before_handler>
+        </observers>
+      </sales_order_place_before>
+	  <order_cancel_after> <!-- identifier of the event we want to catch -->
+        <observers>
+          <order_cancel_after_handler> <!-- identifier of the event handler -->
+            <type>model</type> <!-- class method call type; valid are model, object and singleton -->
+            <class>smsnotification/observer</class> <!-- observers class alias -->
+            <method>cancleafter</method>  <!-- observer's method to be called -->
+            <args></args> <!-- additional arguments passed to observer -->
+          </order_cancel_after_handler>
+        </observers>
+
+      </order_cancel_after>
+	  <sales_order_payment_place_start> <!-- identifier of the event we want to catch -->
+        <observers>
+          <sales_order_payment_place_start_handler> <!-- identifier of the event handler -->
+            <type>model</type> <!-- class method call type; valid are model, object and singleton -->
+            <class>smsnotification/observer</class> <!-- observers class alias -->
+            <method>orderpayment</method>  <!-- observer's method to be called -->
+            <args></args> <!-- additional arguments passed to observer -->
+          </sales_order_payment_place_start_handler>
+        </observers>
+      </sales_order_payment_place_start>
+	  <sales_order_payment_place_end> <!-- identifier of the event we want to catch -->
+        <observers>
+          <sales_order_payment_place_end_handler> <!-- identifier of the event handler -->
+            <type>model</type> <!-- class method call type; valid are model, object and singleton -->
+            <class>smsnotification/observer</class> <!-- observers class alias -->
+            <method>paymentplace</method>  <!-- observer's method to be called -->
+            <args></args> <!-- additional arguments passed to observer -->
+          </sales_order_payment_place_end_handler>
+        </observers>
+      </sales_order_payment_place_end>
+	  <sales_order_payment_cancel_invoice> <!-- identifier of the event we want to catch -->
+        <observers>
+          <sales_order_payment_cancel_invoice_handler> <!-- identifier of the event handler -->
+            <type>model</type> <!-- class method call type; valid are model, object and singleton -->
+            <class>smsnotification/observer</class> <!-- observers class alias -->
+            <method>cancelinvoice</method>  <!-- observer's method to be called -->
+            <args></args> <!-- additional arguments passed to observer -->
+          </sales_order_payment_cancel_invoice_handler>
+        </observers>
+      </sales_order_payment_cancel_invoice>
+	  <sales_order_payment_refund> <!-- identifier of the event we want to catch -->
+        <observers>
+          <sales_order_payment_refund_handler> <!-- identifier of the event handler -->
+            <type>model</type> <!-- class method call type; valid are model, object and singleton -->
+            <class>smsnotification/observer</class> <!-- observers class alias -->
+            <method>paymentrefound</method>  <!-- observer's method to be called -->
+            <args></args> <!-- additional arguments passed to observer -->
+          </sales_order_payment_refund_handler>
+        </observers>
+      </sales_order_payment_refund>
+	  <sales_order_payment_cancel_creditmemo> <!-- identifier of the event we want to catch -->
+        <observers>
+          <sales_order_payment_cancel_creditmemo_handler> <!-- identifier of the event handler -->
+            <type>model</type> <!-- class method call type; valid are model, object and singleton -->
+            <class>smsnotification/observer</class> <!-- observers class alias -->
+            <method>cancelcreditmemo</method>  <!-- observer's method to be called -->
+            <args></args> <!-- additional arguments passed to observer -->
+          </sales_order_payment_cancel_creditmemo_handler>
+        </observers>
+      </sales_order_payment_cancel_creditmemo>
+	  <sales_order_payment_cancel> <!-- identifier of the event we want to catch -->
+        <observers>
+          <sales_order_payment_cancel_handler> <!-- identifier of the event handler -->
+            <type>model</type> <!-- class method call type; valid are model, object and singleton -->
+            <class>smsnotification/observer</class> <!-- observers class alias -->
+            <method>paymentcancels</method>  <!-- observer's method to be called -->
+            <args></args> <!-- additional arguments passed to observer -->
+          </sales_order_payment_cancel_handler>
+        </observers>
+      </sales_order_payment_cancel>
+	  <sales_order_invoice_register> <!-- identifier of the event we want to catch -->
+        <observers>
+          <sales_order_invoice_register_handler> <!-- identifier of the event handler -->
+            <type>model</type> <!-- class method call type; valid are model, object and singleton -->
+            <class>smsnotification/observer</class> <!-- observers class alias -->
+            <method>invoiceregister</method>  <!-- observer's method to be called -->
+            <args></args> <!-- additional arguments passed to observer -->
+          </sales_order_invoice_register_handler>
+        </observers>
+      </sales_order_invoice_register>
+	  <sales_order_item_cancel> <!-- identifier of the event we want to catch -->
+        <observers>
+          <sales_order_item_cancel_handler> <!-- identifier of the event handler -->
+            <type>model</type> <!-- class method call type; valid are model, object and singleton -->
+            <class>smsnotification/observer</class> <!-- observers class alias -->
+            <method>itemcancel</method>  <!-- observer's method to be called -->
+            <args></args> <!-- additional arguments passed to observer -->
+          </sales_order_item_cancel_handler>
+        </observers>
+      </sales_order_item_cancel>
+	  
+      
+    </events>
+  </global>
+</config> 

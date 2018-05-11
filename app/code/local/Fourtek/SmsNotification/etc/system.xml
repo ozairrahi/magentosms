@@ -1,0 +1,326 @@
+<?xml version="1.0"?>
+<config>
+	  <tabs>
+		<smanotification translate="label" module="returnorder">
+            <label>Sms Notification</label>
+            <sort_order>1</sort_order>
+        </smanotification>
+	  </tabs>
+	  <sections>
+		<sendermobile  translate="label" module="smsnotification">            
+					<groups>
+				      <sendermobile translate="label"> 
+				       <fields>
+                          <sendermobile translate="label">
+                            <label>sendermobile</label>
+							<frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </sendermobile>
+					   </fields>
+					   </sendermobile>
+					</groups>
+		</sendermobile>
+		<smanotification  translate="label" module="smsnotification">                    
+		<label>Setting</label>
+		<tab>smanotification</tab>
+		<frontend_type>text</frontend_type>
+		<sort_order>0</sort_order>
+		<show_in_default>1</show_in_default>
+		<show_in_website>1</show_in_website>
+		<show_in_store>1</show_in_store>            
+					<groups>
+				      <smanotification translate="label"> 
+					  <label>General</label>
+					  <frontend_type>text</frontend_type>
+					  <sort_order>0</sort_order>
+					  <show_in_default>1</show_in_default>
+					  <show_in_website>1</show_in_website>
+					  <show_in_store>1</show_in_store>
+				       <fields>
+                          <smanotification translate="label">
+                            <label>Enable/Disable</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </smanotification>
+					   </fields>
+
+					   </smanotification>
+					</groups>
+					<groups>
+				      <msg91sms translate="label"> 
+					  <label>Configuration </label>
+					  <frontend_type>text</frontend_type>
+					  <sort_order>0</sort_order>
+					  <show_in_default>1</show_in_default>
+					  <show_in_website>1</show_in_website>
+					  <show_in_store>1</show_in_store>
+					  <fields>
+                          <smsservices translate="label">
+                            <label>Sms Services</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smsnotification/smsmodel</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </smsservices>
+					   </fields>
+					   <fields>
+                          <authkey translate="label">
+                            <label>Authkey</label>
+                            <frontend_type>text</frontend_type>
+                            
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <smsservices>msg91</smsservices>
+                            </depends>
+                          </authkey>
+					   </fields>
+					   
+					   <fields>
+                          <sender translate="label">
+                            <label>Sender</label>
+                            <frontend_type>text</frontend_type>
+                            
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <smsservices>msg91</smsservices>
+                            </depends>
+                          </sender>
+					   </fields>
+					   <fields>
+                          <route translate="label">
+                            <label>Route</label>
+                            <frontend_type>text</frontend_type>
+                            
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <smsservices>msg91</smsservices>
+                            </depends>
+                          </route>
+					   </fields>
+					   <fields>
+                          <smsurl translate="label">
+                            <label>URL</label>
+                            <frontend_type>text</frontend_type>
+                            
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <smsservices>msg91</smsservices>
+                            </depends>
+                            <comment><![CDATA[<a href='https://msg91.com/' target="_blank">msg91.com</a>. MSG91]]></comment>
+                          </smsurl>
+					   </fields>
+					   <fields>
+                          	<bhashurl translate="label">
+                            <label>Bhash URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <smsservices>bhashsms</smsservices>
+                            </depends>
+                          </bhashurl>
+					   </fields>
+					   <fields>
+                          	<bhashuser translate="label">
+                            <label>User</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <smsservices>bhashsms</smsservices>
+                            </depends>
+                          </bhashuser>
+					   </fields>
+					   <fields>
+                          	<bhashpasword translate="label">
+                            <label>Password</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <smsservices>bhashsms</smsservices>
+                            </depends>
+                          </bhashpasword>
+					   </fields>
+					   <fields>
+                          	<bhashsender translate="label">
+                            <label>Sender</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <smsservices>bhashsms</smsservices>
+                            </depends>
+                          </bhashsender>
+					   </fields>
+					   <fields>
+                          	<bhashspriority translate="label">
+                            <label>Priority</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <smsservices>bhashsms</smsservices>
+                            </depends>
+                          </bhashspriority>
+					   </fields>
+					   <fields>
+                          	<bhashsstype translate="label">
+                            <label>Stype</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[<a href='http://bhashsms.com/' target="_blank">bhashsms.com</a>. Bhash SMS]]></comment>
+                            <depends>
+                                <smsservices>bhashsms</smsservices>
+                            </depends>
+                          </bhashsstype>
+
+					   </fields>
+					  
+					   </msg91sms>
+					</groups>
+					<groups>
+						<smstextarea translate="label"> 
+					  	<label>Order Event Messages</label>
+					  	<frontend_type>text</frontend_type>
+					  	<sort_order>0</sort_order>
+					  	<show_in_default>1</show_in_default>
+					  	<show_in_website>1</show_in_website>
+					  	<show_in_store>1</show_in_store>
+					  	<fields>
+                          	<placeorder translate="label">
+                            <label>Placeorder Message</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[
+                                <p> Variable parameters <b> :  {{customer_name}},{{order_amt}},{{order_id}} </b> </p>
+                            ]]></comment>
+                            
+                          </placeorder>
+					    </fields>
+					  	<fields>
+                          	<invoicesms translate="label">
+                            <label>Invoice Message</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[
+                            
+                                <p> Variable parameters <b> :  {{customer_name}},{{order_amt}},{{order_id}} </b> </p>
+                            ]]></comment>
+                            
+                          </invoicesms>
+					    </fields>
+					    
+					    <fields>
+                          	<shipmentsms translate="label">
+                            <label>Shipment Message</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[
+                                <p> Variable parameters <b> :  {{customer_name}},{{order_amt}},{{order_id}} </b> </p>
+                            ]]></comment>
+                            
+                          </shipmentsms>
+					    </fields>
+					    <fields>
+                          	<creditmemosms translate="label">
+                            <label>Creditmemo Message</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[
+                                <p> Variable parameters <b> :  {{customer_name}},{{order_amt}},{{order_id}} </b> </p>
+                            ]]></comment>
+                            
+                          </creditmemosms>
+					    </fields>
+					    <fields>
+                          	<cancelsms translate="label">
+                            <label>Cancel Message</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[
+                                <p> Variable parameters <b> :  {{customer_name}},{{order_amt}},{{order_id}} </b> </p>
+                            ]]></comment>
+                            
+                          </cancelsms>
+					    </fields>
+					  </smstextarea>
+
+					</groups>
+                <!-- <groups>
+                    <customersms translate="label"> 
+                        <label>Customer Event Messages </label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>0</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                        <fields>
+                            <customerregister translate="label">
+                            <label>Register Message</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[
+                                <p> Variable parameters <b> :  {{customer_name}}</b> </p>
+                            ]]></comment>
+                            
+                          </customerregister>
+                        </fields>
+                    </customersms>
+                </groups> -->
+
+		</smanotification>
+	  </sections>
+</config>
